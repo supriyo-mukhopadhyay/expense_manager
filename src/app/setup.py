@@ -11,7 +11,7 @@ def create_table():
         """CREATE TABLE IF NOT EXISTS categories (id INTEGER PRIMARY KEY, name TEXT)"""
     )
     con.execute(
-        """CREATE TABLE IF NOT EXISTS expenses (id INTEGER PRIMARY KEY, catagory_id INTEGER, amount INTEGER, creation_date TEXT, FOREIGN KEY (catagory_id) REFERENCES categories (id))"""
+        """CREATE TABLE IF NOT EXISTS expenses (id INTEGER PRIMARY KEY, category_id INTEGER, amount INTEGER, creation_date TEXT, FOREIGN KEY (category_id) REFERENCES categories (id))"""
     )
 
     print("table created suucessfully")
@@ -31,11 +31,11 @@ def insertDefaultData():
 
 def resetDatabase():
     con = sqlite3.connect(f"{projectPath}/data/external/expenseManager.db")
-    con.execute("""DROP TABLE expenses""")
+    # con.execute("""DROP TABLE expenses""")
     con.execute("""DROP TABLE categories""")
     con.close()
 
 
 # resetDatabase()
-# create_table()
+create_table()
 insertDefaultData()
