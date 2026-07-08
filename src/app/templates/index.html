@@ -9,6 +9,13 @@
       integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
   </head>
   <body>
     <div class="container">
@@ -17,12 +24,26 @@
           <h3>Expense Manager</h3>
         </div>
       </div>
+
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="save" autocomplete="off">
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="nav-item">
+              <a href="/" class="nav-link active">Add Expense</a>
+            </li>
+            <li role="presentation" class="nav-item">
+              <a href="/report">Report</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <form method="post" action="/" autocomplete="off">
             <div class="form-group">
               <label for="category"></label>
-              <select id="category" name="category" class="form-control">
+              <select id="category" name="category_id" class="form-control">
                 <option value="">Select A Category</option>
                 {% for category in categories%}
                 <option value="{{category['id']}}">{{category['name']}}</option>
