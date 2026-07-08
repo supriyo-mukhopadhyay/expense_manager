@@ -6,3 +6,4 @@ awswrangler
 IPython
 ipykernel
 pylance
+flask===1.1.1
