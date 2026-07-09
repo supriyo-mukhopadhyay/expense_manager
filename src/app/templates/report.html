@@ -7,12 +7,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
       integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous" />
     <link
       rel="stylesheet"
-      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-    />
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="{{ url_for('static', filename='js/report.js') }}"></script>
   </head>
@@ -36,12 +34,67 @@
           </ul>
         </div>
       </div>
-
+      <!-- prettier-ignore -->
+      <!-- prettier-ignore-attribute -->
+      <!-- prettier-ignore-attribute (interval_type) -->
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="report" autocomplete="off"></form>
+          <form id="report" method="post" action="report" autocomplete="off">
+            <input
+              type="radio"
+              class="input-control interval_type"
+              name="interval"
+              id="all"
+              value="all"
+              checked >
+            <label for="all">Overall</label>
+           
+            <input
+              type="radio"
+              class="input-control interval_type"
+              name="interval"
+              id="daily"
+              value="daily"
+              {% if interval=="daily" %} checked {% endif %}
+            />
+            <label for="daily">Today</label>
+
+            <input
+              type="radio"
+              class="input-control interval_type"
+              name="interval"
+              id="weekly"
+              value="weekly" 
+              {% if interval=="weekly" %} checked {% endif %}
+            />
+            <label for="weekly">Weekly</label>
+
+            <input
+              type="radio"
+              class="input-control interval_type"
+              name="interval"
+              id="monthly"
+              value="monthly" 
+              {% if interval=="monthly" %} checked {% endif %}
+            />
+            <label for="monthly">Monthly</label>
+
+            <input
+              type="radio"
+              class="input-control interval_type"
+              name="interval"
+              id="yearly"
+              value="yearly" 
+              {% if interval=="yearly" %} checked {% endif %}
+            />
+            <label for="Yearly">Yearly</label>
+          </form>
         </div>
       </div>
+
+      <!-- prettier-ignore -->
+      <!-- prettier-ignore-attribute -->
+      <!-- prettier-ignore-attribute (interval_type) -->
 
       <div class="row">
         <div class="col-md-12">

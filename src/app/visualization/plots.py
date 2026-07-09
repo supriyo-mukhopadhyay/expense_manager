@@ -1,23 +1,24 @@
 import matplotlib.pyplot as plt
 import os
 from model import data
+
+
 class report:
     def __init__(self) -> None:
         self.projectPath = os.getcwd()
         self.db = data.database()
-    
-    def plot(self):
-        expenses = self.db.getExpenseData()
+
+    def plot(self, interval="all"):
+        expenses = self.db.getExpenseData(interval)
         categories = []
         amount = []
-        
+
         for expense in expenses:
-            categories.append(expense['name'])
-            amount.append(expense['amount'])
-            
-            
+            categories.append(expense["name"])
+            amount.append(expense["amount"])
+
         fig, ax = plt.subplots()
-        ax.pie(amount, labels= categories)
-        ax.axis('equal')
+        ax.pie(amount, labels=categories)
+        ax.axis("equal")
         # plt.show()
-        return fig.savefig(f'{self.projectPath}/src/app/static/img/expenses.png')
+        return fig.savefig(f"{self.projectPath}/src/app/static/img/expenses.png")

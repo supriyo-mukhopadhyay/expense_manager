@@ -1,8 +1,8 @@
 $(document).ready(function () {
   // alert("hello");
-  $(function () {
-    $("#date").datepicker();
-  });
+  // $(function () {
+  //   $("#date").datepicker();
+  // });
 
   $("#category").change(function () {
     $("#other").attr("type", "hidden");
