@@ -11,17 +11,18 @@ class database:
     def __init__(self) -> None:
         pass
 
-    def saveExpense(self, formData) -> None:
+    def saveExpense(self, formData, user_id) -> None:
         con = sqlite3.connect(f"{projectPath}/data/external/expenseManager.db")
         cur = con.cursor()
         dtime = datetime.strptime(formData["date"], "%Y-%m-%dT%H:%M")
         print(dtime.strftime("%Y-%m-%d"))
         cur.execute(
-            """INSERT INTO expenses (category_id, amount, creation_date) VALUES (?,?,?)""",
+            """INSERT INTO expenses (category_id, amount, creation_date, user_id) VALUES (?,?,?,?)""",
             (
                 formData["category_id"],
                 formData["amount"],
                 dtime.strftime("%Y-%m-%d"),
+                user_id,
             ),
         )
         con.commit()

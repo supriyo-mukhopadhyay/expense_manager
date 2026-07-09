@@ -1,6 +1,10 @@
-// alert(interval);
 $(document).ready(function () {
-  $(".interval_type").change(function () {
-    $("#report").submit();
+  alert("hi");
+  $(".interval_type").click(function () {
+    $("#reports").submit();
   });
+});
+
+$("#interval_type ").on("click", function () {
+  alert("hi");
 });

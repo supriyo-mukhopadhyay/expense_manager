@@ -8,3 +8,4 @@ ipykernel
 pylance
 Flask>=2.1.0
 matplotlib
+flask-session
