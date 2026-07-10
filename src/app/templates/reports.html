@@ -11,18 +11,18 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous" />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <link
       rel="canonical"
-      href="https://getbootstrap.com/docs/5.0/examples/sign-in/"
-    />
+      href="https://getbootstrap.com/docs/5.0/examples/sign-in/" />
     <script src="{{ url_for('static', filename='js/report.js') }}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -44,8 +44,7 @@
   </head>
   <body>
     <header
-      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
-    >
+      class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"
         >Expense Manager</a
       >
@@ -56,16 +55,14 @@
         data-bs-target="#sidebarMenu"
         aria-controls="sidebarMenu"
         aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <input
         class="form-control form-control-dark w-100"
         type="text"
         placeholder="Search"
-        aria-label="Search"
-      />
+        aria-label="Search" />
       <div class="navbar-nav">
         <div class="nav-item text-nowrap" method="post" action="/logout">
           <a class="nav-link px-3" href="/logout">Sign out</a>
@@ -77,30 +74,29 @@
       <div class="row">
         <nav
           id="sidebarMenu"
-          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
-        >
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
-              <li class="nav-item" action="/home" method="post">
+              <li class="nav-item" action="home" method="post">
                 <a class="nav-link active" aria-current="page" href="/home">
                   <span data-feather="home"></span>
                   Home
                 </a>
               </li>
 
-              <li class="nav-item" action="/user" method="get">
+              <li class="nav-item" action="user" method="get">
                 <a class="nav-link" href="/user">
                   <span data-feather="users"></span>
                   User Details
                 </a>
               </li>
-              <li class="nav-item" action="/reports" method="post">
-                <a class="nav-link" href="/reports" name="interval">
+              <li class="nav-item" action="reports">
+                <a class="nav-link" href="/reports">
                   <span data-feather="bar-chart-2"></span>
                   Reports
                 </a>
               </li>
-              <li class="nav-item" action="/addexpense" method="post">
+              <li class="nav-item" action="addexpense" method="post">
                 <a class="nav-link" href="/addexpense">
                   <span data-feather="layers"></span>
                   Add Expenses
@@ -109,36 +105,35 @@
             </ul>
 
             <h6
-              class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
-            >
+              class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Saved reports</span>
               <a class="link-secondary" href="#" aria-label="Add a new report">
                 <span data-feather="plus-circle"></span>
               </a>
             </h6>
             <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li class="nav-item" method="get">
+                <a class="nav-link" href="/DailyReports">
                   <span data-feather="file-text"></span>
-                  Last Week
+                  Daily
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li class="nav-item" method="get">
+                <a class="nav-link" href="/weeklyReports">
                   <span data-feather="file-text"></span>
-                  Last Month
+                  Weekly
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li class="nav-item" method="get">
+                <a class="nav-link" href="/monthlyReports">
                   <span data-feather="file-text"></span>
-                  Last Year
+                  Monthly
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+              <li class="nav-item" method="get">
+                <a class="nav-link" href="/yearlyReports">
                   <span data-feather="file-text"></span>
-                  Year-end sale
+                  Yearly
                 </a>
               </li>
             </ul>
@@ -147,9 +142,95 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-          >
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Total Expense</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <form id="saveplot" method="post">
+                <input type="hidden" name="save" id="save" />
+              </form>
+              <div class="btn-group me-2">
+                <button
+                  type="submit"
+                  class="btn btn-sm btn-outline-secondary"
+                  href="/save"
+                  method="post"
+                  onclick="saveForm()">
+                  Save
+                </button>
+                <script>
+                  function saveForm() {
+                    // alert("hi");
+                    document.getElementById("saveplot").submit();
+                  }
+                </script>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Export
+                </button>
+              </div>
+              <!-- dropdown-toggle -->
+              <form id="intervalForm" method="post">
+                <input type="hidden" name="interval" id="interval" />
+              </form>
+
+              <div class="dropdown">
+                <button
+                  class="btn btn-sm dropdown-toggle btn-outline-secondary"
+                  type="button"
+                  data-bs-toggle="dropdown">
+                  Select Interval
+                </button>
+
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="javascript:void(0);"
+                      onclick="submitInterval('all')"
+                      >Overall</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="javascript:void(0);"
+                      onclick="submitInterval('daily')"
+                      >Daily</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="javascript:void(0);"
+                      onclick="submitInterval('weekly')"
+                      >Weekly</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="javascript:void(0);"
+                      onclick="submitInterval('monthly')"
+                      >Monthly</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="javascript:void(0);"
+                      onclick="submitInterval('yearly')"
+                      >Yearly</a
+                    >
+                  </li>
+                </ul>
+                <script>
+                  function submitInterval(interval) {
+                    // alert(interval);
+                    document.getElementById("interval").value = interval;
+                    document.getElementById("intervalForm").submit();
+                  }
+                </script>
+              </div>
+            </div>
           </div>
 
           <div class="chart" id="piechart">
@@ -164,13 +245,11 @@
     <script
       src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
       integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
       integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
   </body>
 </html>
