@@ -74,9 +74,4 @@ This command creates a copy of `.env.example` and names it `.env`, allowing you 
         └── __init__.py
 ```
 
-## Project
 
-'''
-Assume you work as a Data Engineer at a retailer specializing in scale models of classic cars and other transportation. The data analysts are interested in conducting trend analysis for the top products reviewed in Amazon, to inform new product development. Recently, your team acquired Amazon toy review data and product info, and stored them in a data lake bucket. You are asked to clean the data and ensure its accessibility, so that the data analysts can retrieve the data with SQL-based queries. For the initial testing phase, the team has opted to use AWS Glue ETL for the initial data cleaning, and Amazon Athena to query the data.
-'''
-![alt text](image.png)
