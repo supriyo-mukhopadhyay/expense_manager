@@ -1,10 +1,3 @@
-# Data Project Template
-
-<a target="_blank" href="https://datalumina.com/">
-    <img src="https://img.shields.io/badge/Datalumina-Project%20Template-2856f7" alt="Datalumina Project" />
-</a>
-
-
 ## Project Organization
 
 ```
@@ -49,4 +42,28 @@
         └── __init__.py
 ```
 
+## Expense Manager
 
+A web-based personal finance dashboard for tracking, visualizing, and reporting everyday expenses. Built with a Python (Flask/Django) backend, Expense Manager gives users a fast way to log spending and see trends at a glance.
+
+# Features
+
+Interactive Dashboard — A live line chart on the Home page plots total expenses across the days of the week, making spending spikes and dips easy to spot.
+Add Expenses — Quick-entry form for logging new transactions as they happen.
+Reports — Detailed breakdowns of spending, with dedicated saved report views:
+
+Daily
+Weekly
+Monthly
+Yearly
+
+Date-Range Filtering — Toggle the dashboard view between reporting periods (e.g. "This week").
+Share & Export — Export expense data or share reports directly from the dashboard, useful for budget reviews or handing records off to an accountant.
+User Details — Manage account/profile information.
+
+# Tech Stack
+
+Backend: Python (Flask)
+Database: SQLite
+Frontend: HTML, CSS, Bootstrap
+Charting: matplotlib
